@@ -1,0 +1,451 @@
+Healthcare-Appointment-Booking-System
+Complete Setup and Run Guide
+================================
+
+Project type:
+Python + Selenium + Pytest automation project
+
+Important:
+This guide is based on the actual project structure and code.
+The README mentions /tests, /pages, /data and /config, but those folders
+are not present in the actual project.
+
+Actual structure:
+Healthcare-Appointment-Booking-System/
+|
++-- HealthCare_Project/
+|   +-- __init__.py
+|   +-- conftest.py
+|   +-- test_healthcare.py
+|
++-- PageObjects/
+|   +-- __init__.py
+|   +-- Appointmentpage.py
+|   +-- Homepage.py
+|   +-- Loginpage.py
+|
++-- README.md
+
+
+1. REQUIREMENTS
+================
+
+Required:
+- Windows
+- Python
+- Google Chrome
+- Pytest
+- Selenium
+- PyCharm (optional, but useful)
+
+Python version used successfully:
+Python 3.14.5
+
+Packages used successfully:
+pytest 9.1.1
+selenium 4.49.0
+
+
+2. OPEN THE PROJECT
+====================
+
+Extract the ZIP file.
+
+Open this folder in PyCharm:
+
+Healthcare-Appointment-Booking-System
+
+You can also open the folder in a normal terminal.
+
+
+3. CHECK PYTHON
+================
+
+Open the PyCharm Terminal.
+
+Run:
+
+python --version
+
+Expected example:
+
+Python 3.14.5
+
+If Python is not recognized, install Python first and make sure Python
+is added to PATH.
+
+
+4. INSTALL REQUIRED PACKAGES
+==============================
+
+Run:
+
+python -m pip install pytest selenium
+
+If the output says:
+
+Requirement already satisfied
+
+the packages are already installed.
+
+Using "python -m pip" is recommended because it installs packages for
+the Python interpreter being used.
+
+
+5. CHECK PYTEST
+================
+
+Run:
+
+python -m pytest --version
+
+Expected output will contain something similar to:
+
+pytest 9.1.1
+
+
+6. CHECK SELENIUM
+==================
+
+Run:
+
+python -c "import selenium; print(selenium.__version__)"
+
+Expected output will contain the installed Selenium version.
+
+
+7. CHECK GOOGLE CHROME
+=======================
+
+Make sure Google Chrome is installed.
+
+The project uses Chrome WebDriver.
+
+The current Selenium versions can normally manage the required browser
+driver automatically through Selenium Manager.
+
+
+8. RUN THE COMPLETE PROJECT
+============================
+
+Go to the project root:
+
+Healthcare-Appointment-Booking-System>
+
+Run:
+
+python -m pytest
+
+This is the main command for running the complete Pytest automation
+suite.
+
+The current project contains 1 test, so the complete project currently
+runs 1 test.
+
+
+9. SUCCESSFUL OUTPUT
+=====================
+
+A successful run looks similar to:
+
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-..., pluggy-...
+rootdir: ...\Healthcare-Appointment-Booking-System
+collected 1 item
+
+HealthCare_Project\test_healthcare.py .                                  [100%]
+
+============================== 1 passed in ... ================================
+
+
+Meaning:
+
+collected 1 item
+    Pytest found one test.
+
+test_healthcare.py .
+    The test was executed.
+    "." means the test passed.
+
+[100%]
+    All collected tests passed.
+
+1 passed
+    One test passed.
+
+
+10. RUN ONLY THE MAIN TEST FILE
+================================
+
+To run only:
+
+HealthCare_Project/test_healthcare.py
+
+use:
+
+python -m pytest HealthCare_Project/test_healthcare.py
+
+
+11. RUN A SPECIFIC TEST FUNCTION
+=================================
+
+First check the test function name inside:
+
+HealthCare_Project/test_healthcare.py
+
+For the current project, the test function is:
+
+test_healthPro
+
+Run only that test with:
+
+python -m pytest HealthCare_Project/test_healthcare.py::test_healthPro
+
+
+12. RUN WITH VERBOSE OUTPUT
+=============================
+
+Use:
+
+python -m pytest -v
+
+This displays more information about the tests.
+
+For only the main test file:
+
+python -m pytest HealthCare_Project/test_healthcare.py -v
+
+
+13. RUN WITH SHORTER OUTPUT
+=============================
+
+Use:
+
+python -m pytest -q
+
+This gives a more compact result.
+
+Example:
+
+.                                                                        [100%]
+1 passed
+
+
+14. RUN FROM PYCHARM
+=====================
+
+Option A: Run the test file
+
+1. Open:
+   HealthCare_Project/test_healthcare.py
+
+2. Right-click inside the file.
+
+3. Select:
+   Run 'pytest for test_healthcare.py'
+
+Option B: Run a specific test
+
+1. Open:
+   HealthCare_Project/test_healthcare.py
+
+2. Find:
+   test_healthPro
+
+3. Click the green Run icon beside the test.
+
+Option C: Use PyCharm Terminal
+
+Open the Terminal and run:
+
+python -m pytest
+
+
+15. IMPORTANT: PYTEST COMMAND ERROR
+====================================
+
+If this command:
+
+pytest
+
+shows:
+
+'pytest' is not recognized as the name of a cmdlet...
+
+do not worry.
+
+Use:
+
+python -m pytest
+
+instead.
+
+This uses Pytest through the Python interpreter and avoids the PATH
+problem.
+
+
+16. IF PIP IS NOT AVAILABLE
+=============================
+
+Try:
+
+python -m ensurepip --upgrade
+
+Then:
+
+python -m pip install --upgrade pip
+
+Then:
+
+python -m pip install pytest selenium
+
+
+17. IF SELENIUM IMPORT FAILS
+=============================
+
+If you see:
+
+ModuleNotFoundError: No module named 'selenium'
+
+run:
+
+python -m pip install selenium
+
+
+18. IF PYTEST IMPORT/COMMAND FAILS
+===================================
+
+Run:
+
+python -m pip install pytest
+
+Then:
+
+python -m pytest
+
+
+19. IF CHROME DRIVER HAS A PROBLEM
+====================================
+
+First make sure Google Chrome is installed.
+
+Then update Selenium:
+
+python -m pip install --upgrade selenium
+
+Then run:
+
+python -m pytest
+
+
+20. PROJECT EXECUTION FLOW
+===========================
+
+When you run:
+
+python -m pytest
+
+the general flow is:
+
+1. Pytest starts.
+2. Pytest searches for test files.
+3. It finds:
+   HealthCare_Project/test_healthcare.py
+4. conftest.py provides the test setup.
+5. Selenium starts Chrome.
+6. The test creates/uses the Page Object classes.
+7. Selenium performs the browser actions.
+8. The appointment workflow is executed.
+9. The test finishes.
+10. The browser is closed by the test setup/teardown.
+11. Pytest reports PASS or FAIL.
+
+
+21. CURRENT PROJECT TEST COUNT
+================================
+
+The current project contains:
+
+1 test
+
+Main test file:
+
+HealthCare_Project/test_healthcare.py
+
+Main test:
+
+test_healthPro
+
+
+22. USEFUL COMMANDS CHEAT SHEET
+================================
+
+Check Python:
+
+python --version
+
+Install dependencies:
+
+python -m pip install pytest selenium
+
+Check Pytest:
+
+python -m pytest --version
+
+Check Selenium:
+
+python -c "import selenium; print(selenium.__version__)"
+
+Run complete project:
+
+python -m pytest
+
+Run main test file:
+
+python -m pytest HealthCare_Project/test_healthcare.py
+
+Run one test:
+
+python -m pytest HealthCare_Project/test_healthcare.py::test_healthPro
+
+Run with detailed output:
+
+python -m pytest -v
+
+Run with compact output:
+
+python -m pytest -q
+
+
+23. RECOMMENDED FIRST-TIME SETUP
+=================================
+
+Run these commands in order:
+
+python --version
+
+python -m pip install pytest selenium
+
+python -m pytest --version
+
+python -m pytest
+
+
+24. WHAT WAS VERIFIED
+======================
+
+This project was successfully executed using:
+
+Python 3.14.5
+Pytest 9.1.1
+Selenium 4.49.0
+
+Successful command:
+
+python -m pytest
+
+Successful result:
+
+1 passed
+
+The project therefore runs successfully in the current environment.
